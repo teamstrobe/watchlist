@@ -1,7 +1,7 @@
 var React = require('react');
+var SearchBox = require('./SearchBox')
 var SearchResults = require('./SearchResults');
 var WatchList = require('./WatchList');
-var SearchBox = require('./SearchBox');
 
 var AppLocal = React.createClass({
 	getDefaultProps: function() {
@@ -83,7 +83,6 @@ var AppLocal = React.createClass({
 			movies: newMovies
 		});
 	}
-
 });
 
 module.exports = AppLocal;
