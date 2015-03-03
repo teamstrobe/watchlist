@@ -1,13 +1,13 @@
 var React = require('react');
+var SearchBox = require('./SearchBox')
 
 var App = React.createClass({
 
 	render: function() {
 		return (
-			<div>yo</div>
-		);
+			<SearchBox onChange={function(value) { console.log(value) }}/>
+		)
 	}
-
 });
 
 module.exports = App;
