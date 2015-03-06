@@ -1,6 +1,5 @@
 require('whatwg-fetch');
 var CONFIG = require('../../app.config');
-var Utils = require('./utils');
 
 var sessionId = null;
 
@@ -13,6 +12,20 @@ function serializeParams(obj) {
 		str += key + "=" + encodeURIComponent(obj[key]);
 	}
 	return str;
+}
+
+function status(response) {
+	if (response.status >= 200 && response.status < 300) {
+		return Promise.resolve(response)
+	} else {
+		return Promise.reject(new Error(response.statusText))
+	}
+}
+
+function json(response) {
+	if(typeof response.json === 'function') {
+		return response.json()
+	}
 }
 
 function authorize() {
@@ -67,8 +80,8 @@ function action(uri, asyncActions, data, isPost) {
 	}
 
 	return fetch(CONFIG.API_BASE + uri + '?' + serializeParams(params), opts)
-		.then(Utils.status)
-		.then(Utils.json)
+		.then(status)
+		.then(json)
 		.then(function(body) {
 			if(asyncActions) {
 				asyncActions.completed(body);
