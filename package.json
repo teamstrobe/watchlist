@@ -1,20 +1,25 @@
 {
-	"name": "watchlist",
-	"version": "0.0.0",
-	"devDependencies": {
-		"jsx-loader": "^0.12.2",
-		"react": "^0.12.2",
-		"react-hot-loader": "^1.1.4",
-		"webpack": "^1.5.1",
-		"webpack-dev-server": "^1.6.4"
-	},
-	"scripts": {
-		"start": "node server.js"
-	},
-	"dependencies": {
-		"whatwg-fetch": "^0.7.0",
-		"react": "^0.12.2",
-		"reflux": "^0.2.5",
-		"lodash": "^3.3.1"
-	}
+  "name": "watchlist",
+  "version": "0.0.0",
+  "devDependencies": {
+    "jsx-loader": "^0.12.2",
+    "react": "^0.12.2",
+    "react-hot-loader": "^1.1.4",
+    "webpack": "^1.5.1",
+    "webpack-dev-server": "^1.6.4",
+    "babel-core": "^4.6.6",
+    "babel-loader": "^4.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "whatwg-fetch": "^0.7.0",
+    "react": "^0.12.2",
+    "reflux": "^0.2.5",
+    "lodash": "^3.3.1",
+    "flummox": "^2.13.0",
+    "react-router": "^0.12.4",
+    "react-resolver": "^0.2.0"
+  }
 }
