@@ -1,4 +1,4 @@
 var React = require('react');
-var App = require('./App');
+var AppContainer = require('./components/AppContainer');
 
-React.render(<App />, document.getElementById('host'));
+React.render(<AppContainer />, document.getElementById('host'));

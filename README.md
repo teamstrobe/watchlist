@@ -1,2 +1,25 @@
-# watchlist
-Watchlist
+# Watchlist
+
+Watchlist is a React.js demo, which communicates witht the TMDB API to search for movies and sync your watchlist.
+
+## Get started
+
++ Sign up for TMDB (https://www.themoviedb.org/) and verify your account 
++ Copy `app.config.default.js` and paste into a new file called `app.config.js` in the same folder, then change to your own TMDB username and password
++ Install dependencies with `npm install`
++ Run webpack with `npm start`
++ Go to `http://localhost:3000`
+
+## Notable dependencies
+
++ [React](https://github.com/facebook/react)
++ [Reflux](https://github.com/spoike/refluxjs)
++ [Webpack](https://github.com/webpack/webpack)
+
+## Roadmap
+
++ Unit tests!
++ Type annotation with Flow
++ Better store dependencies (UserStore currently depends on WatchlistStore... meh)
++ Try out React Resolver with Flux ?!
++ Swap Reflux in favour of Flummox ?
