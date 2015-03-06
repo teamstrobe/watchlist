@@ -1,6 +1,6 @@
 # Watchlist
 
-Watchlist is a React.js demo, which communicates witht the TMDB API to search for movies and sync your watchlist.
+Watchlist is a React.js demo, which communicates with the TMDB API to search for movies and sync your watchlist.
 
 ## Get started
 
