@@ -15,6 +15,7 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 + [React](https://github.com/facebook/react)
 + [Reflux](https://github.com/spoike/refluxjs)
 + [Webpack](https://github.com/webpack/webpack)
++ [Babel](https://babeljs.io)
 
 ## Roadmap
 
