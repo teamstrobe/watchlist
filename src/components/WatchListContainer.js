@@ -7,9 +7,9 @@ import WatchList from './WatchList';
 // Actions
 import WatchlistActions from '../actions/WatchlistActions';
 
-var WatchListContainer = React.createClass({
+const WatchListContainer = React.createClass({
 
-	render: function() {
+	render() {
 		return (
 			<WatchList
 				movies={this.props.movies}
@@ -17,9 +17,10 @@ var WatchListContainer = React.createClass({
 		);
 	},
 
-	onItemDeleteBtnClick: function(movie, event) {
-		if(!confirm('Delete this movie from your watchlist?'))
+	onItemDeleteBtnClick(movie) {
+		if(!confirm('Delete this movie from your watchlist?')) {
 			return;
+		}
 
 		WatchlistActions.watchlistRemove({
 			movie: movie,

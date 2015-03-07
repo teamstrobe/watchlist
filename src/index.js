@@ -1,4 +1,4 @@
-var React = require('react');
-var AppContainer = require('./components/AppContainer');
+import React from 'react';
+import AppContainer from './components/AppContainer';
 
-React.render(<AppContainer />, document.getElementById('host'));
+React.render(React.createElement(AppContainer), document.getElementById('host'));

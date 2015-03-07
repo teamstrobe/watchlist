@@ -1,14 +1,14 @@
 import React from 'react';
 
-var SearchBox = React.createClass({
+const SearchBox = React.createClass({
 
-	render: function() {
+	render() {
 		return (
-			<input onChange={this._onChange} className="search-box" type="text" placeholder="Add a film" />
+			<input onChange={this.onChange} className="search-box" type="text" placeholder="Add a film" />
 		);
 	},
 
-	_onChange: function(event) {
+	onChange(event) {
 		if(this.props.onChange) {
 			this.props.onChange(event.target.value);
 		}

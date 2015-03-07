@@ -7,15 +7,15 @@ import MovieActions from '../actions/MovieActions';
 // Components
 import SearchBox from './SearchBox';
 
-var SearchBoxContainer = React.createClass({
+const SearchBoxContainer = React.createClass({
 
-	render: function() {
+	render() {
 		return (
 			<SearchBox onChange={this.onChange} />
 		);
 	},
 
-	onChange: function(value, event) {
+	onChange(value) {
 		if(value) {
 			MovieActions.movieSearch({
 				query: value

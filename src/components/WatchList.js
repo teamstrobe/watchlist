@@ -1,14 +1,14 @@
 import React from 'react';
 
-var WatchList = React.createClass({
+const WatchList = React.createClass({
 
-	render: function() {
+	render() {
 		var latestMovies = (this.props.movies) ? this.props.movies.slice(0).reverse() : [];
 
 		if(latestMovies.length) {
 			return (
 				<ul className="watch-list">
-					{latestMovies.map(function(movie, i) {
+					{latestMovies.map(function(movie) {
 						return (
 							<li className="watch-list-item" key={movie.id}>
 								<button className="watch-list-item__delete-btn" onClick={this.onItemDeleteBtnClick.bind(this, movie)}>
@@ -29,7 +29,7 @@ var WatchList = React.createClass({
 		}
 	},
 
-	onItemDeleteBtnClick: function(movie) {
+	onItemDeleteBtnClick(movie) {
 		this.props.onItemDeleteBtnClick(movie);
 	}
 });

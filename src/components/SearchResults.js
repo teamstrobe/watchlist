@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import React from 'react';
 
-var SearchResults = React.createClass({
+const SearchResults = React.createClass({
 
-	render: function() {
+	render() {
 		if(this.props.results.length) {
 			return (
 				<ul className="search-results">
-					{this.props.results.map(function(result, i) {
-						var isAdded = _.filter(this.props.movies, function(movie, i) {
+					{this.props.results.map(function(result) {
+						var isAdded = _.filter(this.props.movies, function(movie) {
 							return result.id === movie.id;
 						}).length;
 
@@ -18,9 +18,9 @@ var SearchResults = React.createClass({
 							</li>
 						) : (
 							<li key={result.id}>
-								<a onClick={this.props.onItemClick.bind(this, result)} href="javascript:;">
+								<button onClick={this.onItemClick.bind(this, result)}>
 									{result.title}
-								</a>
+								</button>
 							</li>
 						);
 					}.bind(this))}
@@ -32,6 +32,10 @@ var SearchResults = React.createClass({
 				<p>Sorry, there are no results. Try typing something else.</p>
 			);
 		}
+	},
+
+	onItemClick(result) {
+		this.props.onItemClick(result);
 	}
 });
 

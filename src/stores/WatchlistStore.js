@@ -3,29 +3,27 @@ import Reflux from 'reflux';
 import _ from 'lodash';
 import tmdbAPI from './tmdbAPI';
 
-// Stores
-import UserStore from './UserStore';
-
 // Actions
-import UserActions from '../actions/UserActions';
 import WatchlistActions from '../actions/WatchlistActions';
 
-var WatchlistStore = Reflux.createStore({
-	init: function() {
+const WatchlistStore = Reflux.createStore({
+	init() {
 		this.movies = [];
 		this.listenToMany(WatchlistActions);
 	},
 
-	getInitialState: function() {
+	getInitialState() {
 		return {
 			movies: this.movies
 		};
 	},
 
-	onWatchlistAdd: function(data) {
-		if(_.filter(this.movies, function(v, i) {
+	onWatchlistAdd(data) {
+		if(_.filter(this.movies, function(v) {
 			return data.movie.id === v.id;
-		}).length) return;
+		}).length) {
+			return;
+		}
 
 		this.movies.push(data.movie);
 
@@ -40,8 +38,8 @@ var WatchlistStore = Reflux.createStore({
 		});
 	},
 
-	onWatchlistAddFailed: function(movie, ex) {
-		this.movies = _.filter(this.movies, function(v, i) {
+	onWatchlistAddFailed(movie) {
+		this.movies = _.filter(this.movies, function(v) {
 			return movie.id !== v.id;
 		});
 
@@ -50,8 +48,8 @@ var WatchlistStore = Reflux.createStore({
 		});
 	},
 
-	onWatchlistRemove: function(data) {
-		this.movies = _.filter(this.movies, function(v, i) {
+	onWatchlistRemove(data) {
+		this.movies = _.filter(this.movies, function(v) {
 			return data.movie.id !== v.id;
 		});
 
@@ -66,19 +64,19 @@ var WatchlistStore = Reflux.createStore({
 		});
 	},
 
-	onWatchlistRemoveFailed: function(movie, ex) {
+	onWatchlistRemoveFailed(movie) {
 		this.movies.push(movie);
 		this.trigger({
 			movies: this.movies
-		})
+		});
 	},
 
-	onWatchlistFetch: function(data) {
+	onWatchlistFetch(data) {
 		var uri = '/account/' + data.user.id + '/watchlist/movies';
 		tmdbAPI.get(uri, WatchlistActions.watchlistFetch);
 	},
 
-	onWatchlistFetchCompleted: function(body) {
+	onWatchlistFetchCompleted(body) {
 		this.movies = body.results;
 		this.trigger({
 			movies: this.movies

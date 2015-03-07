@@ -6,7 +6,7 @@ import SearchBoxContainer from './SearchBoxContainer';
 import SearchResultsContainer from './SearchResultsContainer';
 import WatchListContainer from './WatchListContainer';
 
-var App = React.createClass({
+const App = React.createClass({
 	render: function() {
 		return (
 			<div className="wrapper">

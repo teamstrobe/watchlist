@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 
-var MovieActions = Reflux.createActions({
+const MovieActions = Reflux.createActions({
 	'movieSearch': { asyncResult: true }
 });
 

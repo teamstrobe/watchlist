@@ -7,15 +7,15 @@ import WatchlistActions from '../actions/WatchlistActions';
 // Components
 import SearchResults from './SearchResults';
 
-var SearchResultsContainer = React.createClass({
+const SearchResultsContainer = React.createClass({
 
-	render: function() {
+	render() {
 		return (
 			<SearchResults movies={this.props.movies} results={this.props.results} onItemClick={this.onItemClick} />
 		);
 	},
 
-	onItemClick: function(result, event) {
+	onItemClick(result) {
 		WatchlistActions.watchlistAdd({
 			movie: result,
 			user: this.props.user
