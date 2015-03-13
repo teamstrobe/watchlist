@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   devtool: 'eval',
@@ -8,7 +9,7 @@ module.exports = {
     './src/index'
   ],
   output: {
-    path: __dirname + '/src/',
+    path: path.join(__dirname, '/src/'),
     filename: 'bundle.js',
     publicPath: '/src/'
   },
@@ -21,7 +22,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ }
+      { test: /\.js$/, loaders: ['react-hot', 'babel-loader?experimental'], exclude: /node_modules/ }
     ]
   }
 };

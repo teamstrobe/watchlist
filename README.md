@@ -13,7 +13,7 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 ## Notable dependencies
 
 + [React](https://github.com/facebook/react)
-+ [Reflux](https://github.com/spoike/refluxjs)
++ [Flummox](https://github.com/acdlite/flummox)
 + [Webpack](https://github.com/webpack/webpack)
 + [Babel](https://babeljs.io)
 
@@ -21,6 +21,6 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 
 + Unit tests!
 + Type annotation with Flow
-+ Better store dependencies (UserStore currently depends on WatchlistStore... meh)
++ ~~Better store dependencies (UserStore currently depends on WatchlistStore... meh)~~
 + Try out React Resolver with Flux ?!
-+ Swap Reflux in favour of Flummox ?
++ ~~Swap Reflux in favour of Flummox ?~~

@@ -4,11 +4,15 @@ import React from 'react';
 const SearchResults = React.createClass({
 
 	render() {
+		if(!this.props.results) {
+			return null;
+		}
+
 		if(this.props.results.length) {
 			return (
 				<ul className="search-results">
 					{this.props.results.map(function(result) {
-						var isAdded = _.filter(this.props.movies, function(movie) {
+						var isAdded = _.filter(this.props.watchlist, function(movie) {
 							return result.id === movie.id;
 						}).length;
 
@@ -35,7 +39,9 @@ const SearchResults = React.createClass({
 	},
 
 	onItemClick(result) {
-		this.props.onItemClick(result);
+		if(this.props.onItemClick) {
+			this.props.onItemClick(result);
+		}
 	}
 });
 

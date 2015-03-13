@@ -3,7 +3,7 @@ import React from 'react';
 const WatchList = React.createClass({
 
 	render() {
-		var latestMovies = (this.props.movies) ? this.props.movies.slice(0).reverse() : [];
+		var latestMovies = (this.props.watchlist) ? this.props.watchlist.slice(0).reverse() : [];
 
 		if(latestMovies.length) {
 			return (
@@ -30,7 +30,13 @@ const WatchList = React.createClass({
 	},
 
 	onItemDeleteBtnClick(movie) {
-		this.props.onItemDeleteBtnClick(movie);
+		if(!confirm('Delete this movie from your watchlist?')) {
+			return;
+		}
+
+		if(this.props.onItemDelete) {
+			this.props.onItemDelete(movie);
+		}
 	}
 });
 

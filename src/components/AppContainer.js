@@ -1,41 +1,39 @@
-// Libs
 import React from 'react';
-import Reflux from 'reflux';
-
-// Stores
-import UserStore from '../stores/UserStore';
-import MovieStore from '../stores/MovieStore';
-import WatchlistStore from '../stores/WatchlistStore';
-
-// Actions
-import UserActions from '../actions/UserActions';
+import _ from 'lodash';
 
 // Components
 import App from './App';
+import FluxComponent from 'flummox/component';
 
 const AppContainer = React.createClass({
-	mixins: [
-		Reflux.connect(UserStore),
-		Reflux.connect(MovieStore),
-		Reflux.connect(WatchlistStore)
-	],
-
 	componentWillMount() {
-		UserActions.userFetch();
+		this.fetchData();
+	},
+
+	async fetchData() {
+		var user = await this.props.flux.getActions('user').userFetch();
+		this.props.flux.getActions('watchlist').watchlistFetch(user);
 	},
 
 	render() {
-		// Set the full URL for the poster, based on the host and path
-		var movies = this.state.movies.map(function(movie) {
-			movie.poster_url = 'http://image.tmdb.org/t/p/w300' + movie.poster_path;
-			return movie;
-		});
-
 		return (
-			<App
-				user={this.state.user}
-				movies={movies}
-				results={this.state.results} />
+			<FluxComponent flux={this.props.flux} connectToStores={{
+				user: store => ({
+					user: store.getUser()
+				}),
+				results: store => ({
+					results: store.getResults()
+				}),
+				watchlist: store => ({
+					watchlist: store.getWatchlist().map(movie => 
+						_.extend(movie, {
+							poster_url: 'http://image.tmdb.org/t/p/w300' + movie.poster_path
+						})
+					)
+				})
+			}}>
+				<App />
+			</FluxComponent>
 		);
 	}
 });

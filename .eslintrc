@@ -6,9 +6,20 @@
 	},
 	"rules": {
 		"quotes": "single",
+
+		// Turn strict off for now
 		"strict": 0,
+
+		// We like to debug :)
 		"no-debugger": 0,
+
+		// We use snake case for API requests/reponses
 		"camelcase": 0,
-		"no-alert": 0
+
+		// We use alerts for basic UI.
+		"no-alert": 0,
+
+		// Seems to be a few bugs with this. Turning off for now
+		"no-unused-vars": 0
 	}
 }

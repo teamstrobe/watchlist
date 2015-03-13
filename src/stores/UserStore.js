@@ -1,35 +1,27 @@
-// Libs
-import Reflux from 'reflux';
-import tmdbAPI from './tmdbAPI';
+import { Store } from 'flummox';
+import flux from '../flux';
 
-// Actions
-import UserActions from '../actions/UserActions';
-import WatchlistActions from '../actions/WatchlistActions';
+export default class UserStore extends Store {
 
-const UserStore = Reflux.createStore({
-	init() {
-		this.listenToMany(UserActions);
-	},
+	constructor(flux) {
+		super();
 
-	getInitialState() {
-		return {
+		this.state = {
 			user: null
 		};
-	},
 
-	onUserFetch() {
-		tmdbAPI.get('/account', UserActions.userFetch);
-	},
+		let userActionIds = flux.getActionIds('user');
+		this.register(userActionIds.userFetch, this.onUserFetchCompleted);
+	}
 
 	onUserFetchCompleted(user) {
-		WatchlistActions.watchlistFetch({
-			user: user
-		});
-
-		this.trigger({
+		this.setState({
 			user: user
 		});
 	}
-});
 
-export default UserStore;
+	getUser() {
+		return this.state.user;
+	}
+
+}

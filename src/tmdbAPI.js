@@ -1,7 +1,7 @@
 /*global fetch:false*/
 
 import 'whatwg-fetch';
-import CONFIG from '../../app.config';
+import CONFIG from '../app.config';
 
 var sessionId = null;
 
@@ -30,7 +30,7 @@ function json(response) {
 	}
 }
 
-function action(uri, asyncActions, data, isPost) {
+function action(uri, data, isPost) {
 	data = data || null;
 	isPost = isPost || false;
 
@@ -61,61 +61,50 @@ function action(uri, asyncActions, data, isPost) {
 
 	return fetch(CONFIG.API_BASE + uri + '?' + serializeParams(params), opts)
 		.then(status)
-		.then(json)
-		.then(function(body) {
-			if(asyncActions) {
-				asyncActions.completed(body);
-			}
-			return body;
-		})
-		.catch(function(ex) {
-			if(asyncActions) {
-				asyncActions.failed(ex);
-			}
-		});
+		.then(json);
 }
 
 function authorize() {
+	if(typeof sessionId !== 'undefined' && sessionId) {
+		return Promise.resolve(sessionId);
+	}
+
 	return action('/authentication/token/new')
 		.then(function(body) {
-			return action('/authentication/token/validate_with_login', null, {
+			return action('/authentication/token/validate_with_login', {
 				request_token: body.request_token,
 				username: CONFIG.API_USERNAME,
 				password: CONFIG.API_PASSWORD
 			});
 		})
 		.then(function(body) {
-			return action('/authentication/session/new', null, {
+			return action('/authentication/session/new', {
 				request_token: body.request_token
 			});
 		})
 		.then(function(body) {
 			sessionId = body.session_id;
+			return sessionId;
 		})
 		.catch(function(ex) {
 			console.error('Failed to authorize user.', ex);
 		});
 }
 
-function actionWithSession(uri, asyncActions, data, isPost) {
-	if(typeof sessionId === 'undefined' || sessionId === null) {
-		authorize()
-			.then(function() {
-				action(uri, asyncActions, data, isPost);
-			});
-	}
-	else {
-		action(uri, asyncActions, data, isPost);
-	}
+function authorizedCall(uri, data, isPost) {
+	return authorize()
+		.then(function() {
+			return action(uri, data, isPost);
+		});
 }
 
 const tmdbAPI = {
-	get: function(uri, asyncActions, data) {
-		actionWithSession(uri, asyncActions, data);
+	get: function(uri, data) {
+		return authorizedCall(uri, data);
 	},
 
-	post: function(uri, asyncActions, data) {
-		actionWithSession(uri, asyncActions, data, true);
+	post: function(uri, data) {
+		return authorizedCall(uri, data, true);
 	}
 };
 

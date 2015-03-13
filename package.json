@@ -18,8 +18,10 @@
     "react": "^0.12.2",
     "reflux": "^0.2.5",
     "lodash": "^3.3.1",
-    "flummox": "^2.13.0",
+    "flummox": "^2.13.1",
     "react-router": "^0.12.4",
-    "react-resolver": "^0.2.0"
+    "react-resolver": "^0.2.0",
+    "object-assign": "^2.0.0",
+    "babel": "^4.7.3"
   }
 }
