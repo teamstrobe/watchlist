@@ -1,15 +1,39 @@
 import React from 'react/addons';
 
 const SearchBox = React.createClass({
+	getInitialState() {
+		return {
+			isFocused: false
+		};
+	},
+
 	render() {
+		var inputStyle = {
+			padding: '0.7em 1em',
+			backgroundColor: 'rgba(0, 0, 0, 0.5)',
+			color: '#42aaf3',
+			width: '100%',
+			border: 0,
+			outline: 0
+		};
+
+		if(this.props.windowWidth > 400) {
+			inputStyle.fontSize = '3rem';
+		}
+		else {
+			inputStyle.fontSize = '2rem';
+		}
+
 		return (
 			<input
+				style={inputStyle}
 				value={this.props.value}
 				autoFocus={true}
 				onChange={this.handleChange}
-				className="search-box"
 				type="text"
 				placeholder="Add a film"
+				onFocus={this.handleFocus}
+				onBlur={this.handleBlur}
 			/>
 		);
 	},
@@ -20,6 +44,18 @@ const SearchBox = React.createClass({
 		} else if(this.props.onClear) {
 			this.props.onClear();
 		}
+	},
+
+	handleFocus() {
+		this.setState({
+			isFocused: true
+		});
+	},
+
+	handleBlur() {
+		this.setState({
+			isFocused: false
+		});
 	}
 });
 

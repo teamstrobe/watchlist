@@ -28,7 +28,7 @@ export default class WatchlistActions extends Actions {
 	async watchlistRemove(movie, user) {
 		return await tmdbAPI.post('/account/' + user.id + '/watchlist', {
 			media_type: 'movie',
-			media_id: 0,
+			media_id: movie.id,
 			watchlist: false
 		});
 	}

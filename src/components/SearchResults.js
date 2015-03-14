@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React from 'react';
+import React from 'react/addons';
 
 const SearchResults = React.createClass({
 
@@ -8,21 +8,43 @@ const SearchResults = React.createClass({
 			return null;
 		}
 
+		var style = _.extend({
+			fontSize: '1rem',
+			padding: '1rem 3em'
+		}, this.props.style);
+
 		if(this.props.results.length) {
 			return (
-				<ul className="search-results">
+				<ul style={style}>
 					{this.props.results.map(function(result) {
 						var isAdded = _.filter(this.props.watchlist, function(movie) {
 							return result.id === movie.id;
 						}).length;
 
+						var itemStyle = {
+							color: '#fff',
+							fontSize: '1.6rem',
+							opacity: isAdded ? 0.5 : 1,
+							paddingTop: '0.5em',
+							borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
+							display: 'inline-block',
+							cursor: 'pointer',
+							textAlign: 'left',
+							whiteSpace: 'nowrap',
+							textOverflow: 'ellipsis',
+							maxWidth: '100%',
+							overflow: 'hidden'
+						};
+
 						return isAdded ? (
 							<li key={result.id}>
-								{result.title}
+								<span style={itemStyle}>
+									{result.title}
+								</span>
 							</li>
 						) : (
 							<li key={result.id}>
-								<button onClick={this.onItemClick.bind(this, result)}>
+								<button style={itemStyle} onClick={this.onItemClick.bind(this, result)}>
 									{result.title}
 								</button>
 							</li>

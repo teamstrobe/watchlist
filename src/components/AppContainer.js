@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react/addons';
 import _ from 'lodash';
 import fluxMixin from 'flummox/mixin';
 
