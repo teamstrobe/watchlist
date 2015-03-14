@@ -10,7 +10,9 @@
     "babel-loader": "^4.0.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "production": "webpack --config webpack.config.production.js",
+    "production:clean": "rm src/bundle.js"
   },
   "dependencies": {
     "whatwg-fetch": "^0.7.0",

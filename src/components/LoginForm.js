@@ -36,7 +36,7 @@ const LoginForm = React.createClass({
 		return (
 			<form style={styles} onSubmit={this.handleSubmit}>
 				<input autoFocus={true} className="login-input" style={inputStyles} type="text" ref="usernameInput" placeholder="tMDB username" />
-				<input className="login-input" style={_.extend(inputStyles, {marginTop: '1rem'})} type="password" ref="passwordInput" placeholder="tMDB Password" />
+				<input className="login-input" style={_.extend({}, inputStyles, {marginTop: '1rem'})} type="password" ref="passwordInput" placeholder="tMDB Password" />
 				<button style={_.extend(buttonStyles, {marginTop: '1rem'})} type="submit">Log in</button>
 				<p style={{marginTop: '1em'}}><a href="https://www.themoviedb.org/account/signup" target="_blank" style={{color: 'inherit'}}>Register on tMDB</a></p>
 			</form>
