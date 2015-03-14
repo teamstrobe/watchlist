@@ -1,18 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
-import fluxMixin from 'flummox/mixin';
 
 // Components
 import App from './App';
 import FluxComponent from 'flummox/component';
 
 const AppContainer = React.createClass({
-	mixins: [fluxMixin({
-		results: (store) => ({results: store.getResults(), query: store.getQuery()}),
-		user: (store) => ({user: store.getUser()}),
-		watchlist: (store) => ({watchlist: store.getWatchlist()})
-	})],
-
 	componentWillMount() {
 		this.fetchData();
 	},
@@ -24,13 +17,13 @@ const AppContainer = React.createClass({
 
 	render() {
 		return (
-			<App
-				flux={this.flux}
-				results={this.state.results}
-				watchlist={this.state.watchlist}
-				user={this.state.user}
-				query={this.state.query}
-			/>
+			<FluxComponent flux={this.props.flux} connectToStores={{
+				results: (store) => ({results: store.getResults(), query: store.getQuery()}),
+				user: (store) => ({user: store.getUser()}),
+				watchlist: (store) => ({watchlist: store.getWatchlist()})
+			}}>
+				<App />
+			</FluxComponent>
 		);
 	}
 });
