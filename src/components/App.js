@@ -10,24 +10,31 @@ const App = React.createClass({
 	render() {
 		var resultsActions = this.props.flux.getActions('results');
 
+		var watchlist = this.props.watchlist ? this.props.watchlist.map(movie => _.extend(movie, {
+			poster_url: 'http://image.tmdb.org/t/p/w300' + movie.poster_path
+		})) : null;
+
 		return (
 			<div className="wrapper">
+
+				{this.props.user && <SearchBox
+					value={this.props.query}
+					onSearch={resultsActions.movieQuery}
+					onClear={resultsActions.clearSearch}
+				/>}
+
 				{this.props.user && (
 					<div>
-						<SearchBox
-							onSearch={resultsActions.movieQuery}
-							onClear={resultsActions.clearSearch}
-						/>
-
+						
 						<SearchResults
 							results={this.props.results}
-							watchlist={this.props.watchlist}
+							watchlist={watchlist}
 							user={this.props.user}
 							onItemClick={this.onSearchResultsItemClick}
 						/>
 
 						<WatchList
-							watchlist={this.props.watchlist}
+							watchlist={watchlist}
 							onItemDelete={this.onWatchListItemDelete}
 						/>
 					</div>

@@ -7,7 +7,8 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 + Sign up for TMDB (https://www.themoviedb.org/) and verify your account 
 + Copy `app.config.default.js` and paste into a new file called `app.config.js` in the same folder, then change to your own TMDB username and password
 + Install dependencies with `npm install`
-+ Run webpack with `npm start`
++ Install Flummox dependencies by going to `node_modules/flummox` and running `npm install`
++ Run webpack with `npm start` from the project root
 + Go to `http://localhost:3000`
 
 ## Notable dependencies

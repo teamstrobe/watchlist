@@ -40,4 +40,8 @@ export default class ResultStore extends Store {
 		return this.state.results;
 	}
 
+	getQuery() {
+		return this.state.query;
+	}
+
 }
