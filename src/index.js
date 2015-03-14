@@ -5,6 +5,8 @@ import SearchBox from './components/SearchBox';
 
 import 'babel/polyfill';
 
+React.initializeTouchEvents(true);
+
 let flux = new AppFlux();
 var host = document.getElementById('host');
 

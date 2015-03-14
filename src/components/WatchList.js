@@ -12,8 +12,7 @@ const WatchList = React.createClass({
 	render() {
 		var styles = _.extend({
 			paddingLeft: 50,
-			paddingRight: 50,
-			paddingBottom: 150
+			paddingRight: 50
 		}, this.props.style);
 
 		var listStyles = {
@@ -30,11 +29,20 @@ const WatchList = React.createClass({
 			paddingTop: this.props.itemSpacing,
 		};
 
-		if(this.props.windowWidth > 400) {
+		if(this.props.windowWidth > 1200) {
+			itemStyles.width = 100 / 6 + '%';
+		}
+		else if(this.props.windowWidth > 800) {
 			itemStyles.width = 100 / 5 + '%';
 		}
-		else {
+		else if(this.props.windowWidth > 500) {
+			itemStyles.width = 100 / 3 + '%';
+		}
+		else if(this.props.windowWidth > 350) {
 			itemStyles.width = 100 / 2 + '%';
+		}
+		else {
+			itemStyles.width = '100%';
 		}
 
 		var latestMovies = (this.props.watchlist) ? this.props.watchlist.slice(0).reverse() : [];

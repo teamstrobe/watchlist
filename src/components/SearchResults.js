@@ -36,6 +36,10 @@ const SearchResults = React.createClass({
 							overflow: 'hidden'
 						};
 
+						if(this.props.windowWidth) {
+							itemStyle.fontSize = '1rem';
+						}
+
 						return isAdded ? (
 							<li key={result.id}>
 								<span style={itemStyle}>
