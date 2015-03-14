@@ -1,20 +1,26 @@
 // Libs
 import React from 'react/addons';
+import tmdbAPI from '../tmdbAPI';
 
 // Components
 import SearchBox from './SearchBox';
 import SearchResults from './SearchResults';
 import WatchList from './WatchList';
+import LoginForm from './LoginForm';
 
 const App = React.createClass({
-	componentWillMount: function() {
+	componentWillMount() {
 		window.addEventListener('resize', this.handleWindowResize.bind(this));
 		this.setState({
 			windowWidth: window.innerWidth
 		});
+
+		if(tmdbAPI.sessionId) {
+			this.skipLogin();
+		}
 	},
 
-	handleWindowResize: function(event) {
+	handleWindowResize(event) {
 		this.setState({
 			windowWidth: window.innerWidth
 		});
@@ -55,22 +61,34 @@ const App = React.createClass({
 			lineHeight: 1.4
 		};
 
+		var headerLogoutBtnStyles = {
+			position: 'absolute',
+			right: '2rem',
+			bottom: '2rem',
+			fontSize: '1.2rem',
+			color: '#42aaf3',
+			borderBottom: '1px solid'
+		};
+
 		return (
 			<section style={wrapperStyle}>
 
 				<header style={headerStyles}>
 					<h1 style={headerTitleStyles}>Watchlist.</h1>
 					<p style={headerDescStyles}>A movie list app built with React. Acts as a training ground for devs.</p>
+					{(this.props.authorized &&
+						<button style={headerLogoutBtnStyles} onClick={this.handleLogOutBtnClick}>Log out</button>
+					)}
 				</header>
 
-				{this.props.user && <SearchBox
+				{this.props.authorized && <SearchBox
 					value={this.props.query}
 					onSearch={resultsActions.movieQuery}
 					onClear={resultsActions.clearSearch}
 					windowWidth={this.state.windowWidth}
 				/>}
 
-				{this.props.user && (
+				{this.props.authorized && (
 					<div>
 						
 						<SearchResults
@@ -90,21 +108,42 @@ const App = React.createClass({
 
 					</div>
 				) || (
-					<p style={{
-						padding: '3em'
-					}}>Logging in&hellip;</p>
+
+					<LoginForm onSubmit={this.handleLoginFormSubmit} style={{
+						marginTop: '5rem'
+					}} />
+
 				)}
 
 			</section>
 		);
 	},
 
-	onSearchResultsItemClick: function(movie) {
+	onSearchResultsItemClick(movie) {
 		this.props.flux.getActions('watchlist').watchlistAdd(movie, this.props.user);
 	},
 
-	onWatchListItemDelete: function(movie) {
+	onWatchListItemDelete(movie) {
 		this.props.flux.getActions('watchlist').watchlistRemove(movie, this.props.user);
+	},
+
+	async handleLoginFormSubmit(formData) {
+		await this.props.flux.getActions('user').userLogin(formData);
+		this.fetchData();
+	},
+
+	async skipLogin(formData) {
+		await this.props.flux.getActions('user').userSkipLogin();
+		this.fetchData();
+	},
+
+	async fetchData() {
+		var user = await this.props.flux.getActions('user').userFetch();
+	 	await this.props.flux.getActions('watchlist').watchlistFetch(user);
+	},
+
+	handleLogOutBtnClick(event) {
+		this.props.flux.getActions('user').userLogout();
 	}
 });
 

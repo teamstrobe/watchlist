@@ -9,18 +9,9 @@ import FluxComponent from 'flummox/component';
 const AppContainer = React.createClass({
 	mixins: [fluxMixin({
 		results: (store) => ({results: store.getResults(), query: store.getQuery()}),
-		user: (store) => ({user: store.getUser()}),
+		user: (store) => ({user: store.getUser(), authorized: store.getAuthorized()}),
 		watchlist: (store) => ({watchlist: store.getWatchlist()})
 	})],
-
-	componentWillMount() {
-		this.fetchData();
-	},
-
-	async fetchData() {
-		var user = await this.props.flux.getActions('user').userFetch();
-		this.props.flux.getActions('watchlist').watchlistFetch(user);
-	},
 
 	render() {
 		return (
@@ -30,6 +21,7 @@ const AppContainer = React.createClass({
 				watchlist={this.state.watchlist}
 				user={this.state.user}
 				query={this.state.query}
+				authorized={this.state.authorized}
 			/>
 		);
 	}

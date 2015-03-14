@@ -10,7 +10,7 @@ const WatchListItem = React.createClass({
 	getInitialState() {
 		return {
 			isOver: false,
-			isSelected: false
+			// isSelected: false
 		};
 	},
 
@@ -29,8 +29,10 @@ const WatchListItem = React.createClass({
 			height: this.props.deleteBtnSize,
 			borderRadius: '50%',
 			lineHeight: this.props.deleteBtnSize / 2  + 'px',
+			fontWeight: 'bold',
+			fontSize: '1em',
 			// Color
-			backgroundColor: 'red',
+			backgroundColor: '#000',
 			color: '#fff',
 			// Visibility
 			opacity: this.state.isOver ? 1 : 0,
@@ -43,7 +45,7 @@ const WatchListItem = React.createClass({
 			background: 'url(' + this.props.movie.poster_url + ') no-repeat 50% 50%',
 			backgroundSize: '100% auto',
 			boxShadow: '0 0 100px rgba(0, 0, 0, 0.5)',
-			border: this.state.isSelected ? '3px solid #2c74de' : '3px solid transparent'
+			// border: this.state.isSelected ? '3px solid #2c74de' : '3px solid transparent'
 		};
 
 		var imageStyles = {
@@ -65,7 +67,7 @@ const WatchListItem = React.createClass({
 		};
 
 		return (
-			<article style={styles} onClick={this.handleClick} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
+			<article style={styles} onClick={this.handleClick} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
 				<button style={deleteBtnStyles} onClick={this.handleDeleteBtnClick}>
 					X
 				</button>
@@ -88,11 +90,11 @@ const WatchListItem = React.createClass({
 		});
 	},
 
-	handleClick(event) {
-		this.setState({
-			isSelected: !this.state.isSelected
-		});
-	},
+	// handleClick(event) {
+	// 	this.setState({
+	// 		isSelected: !this.state.isSelected
+	// 	});
+	// },
 
 	handleDeleteBtnClick(movie) {
 		if(!confirm('Delete this movie from your watchlist?')) {

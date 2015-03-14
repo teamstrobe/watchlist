@@ -3,7 +3,13 @@
 import 'whatwg-fetch';
 import CONFIG from '../app.config';
 
-var sessionId = null;
+let tmdbAPI = { };
+
+tmdbAPI.sessionId = null;
+
+if(localStorage && localStorage.getItem('sessionId')) {
+	tmdbAPI.sessionId = localStorage.getItem('sessionId');
+}
 
 function serializeParams(obj) {
 	var str = '';
@@ -49,8 +55,8 @@ function action(uri, data, isPost) {
 		api_key: CONFIG.API_KEY
 	};
 
-	if(sessionId) {
-		params.session_id = sessionId;
+	if(tmdbAPI.sessionId) {
+		params.session_id = tmdbAPI.sessionId;
 	}
 
 	if(data && !isPost) {
@@ -64,17 +70,18 @@ function action(uri, data, isPost) {
 		.then(json);
 }
 
-function authorize() {
-	if(typeof sessionId !== 'undefined' && sessionId) {
-		return Promise.resolve(sessionId);
+function authorize(username, password) {
+
+	if(typeof tmdbAPI.sessionId !== 'undefined' && tmdbAPI.sessionId) {
+		return Promise.resolve(tmdbAPI.sessionId);
 	}
 
 	return action('/authentication/token/new')
 		.then(function(body) {
 			return action('/authentication/token/validate_with_login', {
 				request_token: body.request_token,
-				username: CONFIG.API_USERNAME,
-				password: CONFIG.API_PASSWORD
+				username: username,
+				password: password
 			});
 		})
 		.then(function(body) {
@@ -83,12 +90,10 @@ function authorize() {
 			});
 		})
 		.then(function(body) {
-			sessionId = body.session_id;
-			return sessionId;
+			tmdbAPI.sessionId = body.session_id;
+			if(localStorage) localStorage.setItem('sessionId', tmdbAPI.sessionId);
+			return tmdbAPI.sessionId;
 		})
-		.catch(function(ex) {
-			console.error('Failed to authorize user.', ex);
-		});
 }
 
 function authorizedCall(uri, data, isPost) {
@@ -98,14 +103,14 @@ function authorizedCall(uri, data, isPost) {
 		});
 }
 
-const tmdbAPI = {
-	get: function(uri, data) {
-		return authorizedCall(uri, data);
-	},
-
-	post: function(uri, data) {
-		return authorizedCall(uri, data, true);
-	}
+tmdbAPI.get = function(uri, data) {
+	return action(uri, data);
 };
+
+tmdbAPI.post = function(uri, data) {
+	return action(uri, data, true);
+};
+
+tmdbAPI.authorize = authorize;
 
 export default tmdbAPI;

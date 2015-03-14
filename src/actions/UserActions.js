@@ -11,4 +11,20 @@ export default class UserActions extends Actions {
 		}
 	}
 
+	async userLogin(formData) {
+		return await tmdbAPI.authorize(formData.username, formData.password);
+	}
+
+	userLogout() {
+		tmdbAPI.sessionId = null;
+		if(localStorage) {
+			localStorage.removeItem('sessionId');
+		}
+		return true;
+	}
+
+	userSkipLogin() {
+		return true;
+	}
+
 }
