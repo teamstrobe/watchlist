@@ -2,6 +2,8 @@
 
 Watchlist is a React.js demo, which communicates with the TMDB API to search for movies and sync your watchlist.
 
+![Screenshot of Watchlist](http://f.cl.ly/items/0d2r3H45003i0g0z1e14/Screen%20Shot%202015-03-14%20at%2016.49.40.png)
+
 ## Get started
 
 + Sign up for TMDB (https://www.themoviedb.org/) and verify your account 
