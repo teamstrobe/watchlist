@@ -30,8 +30,14 @@ const WatchList = React.createClass({
 			paddingTop: this.props.itemSpacing,
 		};
 
-		if(this.props.windowWidth > 400) {
+		if(this.props.windowWidth > 1200) {
+			itemStyles.width = 100 / 6 + '%';
+		}
+		else if(this.props.windowWidth > 800) {
 			itemStyles.width = 100 / 5 + '%';
+		}
+		else if(this.props.windowWidth > 500) {
+			itemStyles.width = 100 / 3 + '%';
 		}
 		else {
 			itemStyles.width = 100 / 2 + '%';

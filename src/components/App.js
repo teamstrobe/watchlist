@@ -10,7 +10,7 @@ import LoginForm from './LoginForm';
 
 const App = React.createClass({
 	componentWillMount() {
-		window.addEventListener('resize', this.handleWindowResize.bind(this));
+		window.addEventListener('resize', this.handleWindowResize);
 		this.setState({
 			windowWidth: window.innerWidth
 		});
