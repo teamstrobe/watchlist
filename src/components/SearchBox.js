@@ -21,14 +21,13 @@ const SearchBox = React.createClass({
 			inputStyle.fontSize = '3rem';
 		}
 		else {
-			inputStyle.fontSize = '2rem';
+			inputStyle.fontSize = '1.5rem';
 		}
 
 		return (
 			<input
 				style={inputStyle}
 				value={this.props.value}
-				autoFocus={true}
 				onChange={this.handleChange}
 				type="text"
 				placeholder="Add a film"

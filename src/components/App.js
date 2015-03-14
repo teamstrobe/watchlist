@@ -11,9 +11,7 @@ import LoginForm from './LoginForm';
 const App = React.createClass({
 	componentWillMount() {
 		window.addEventListener('resize', this.handleWindowResize);
-		this.setState({
-			windowWidth: window.innerWidth
-		});
+		this.handleWindowResize();
 
 		if(tmdbAPI.sessionId) {
 			this.skipLogin();
@@ -38,7 +36,8 @@ const App = React.createClass({
 			fontSize: '1rem',
 			// Color
 			backgroundColor: '#272727',
-			color: '#efefef'
+			color: '#efefef',
+			paddingBottom: 250
 		};
 
 		var headerStyles = {
@@ -49,25 +48,32 @@ const App = React.createClass({
 			width: '100%',
 			background: '-webkit-linear-gradient(bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%)',
 			color: '#fff',
-			padding: '4rem 2rem 2rem'
+			padding: '4rem 2rem 2rem',
+			pointerEvents: 'none'
 		};
 
 		var headerTitleStyles = {
 			fontSize: '2rem'
 		};
 
+		var headerBodyStyles = {
+			overflow: 'hidden'
+		};
+
 		var headerDescStyles = {
 			paddingTop: '1em',
-			lineHeight: 1.4
+			lineHeight: 1.4,
+			float: 'left',
+			fontSize: '1.2rem'
 		};
 
 		var headerLogoutBtnStyles = {
-			position: 'absolute',
-			right: '2rem',
-			bottom: '2rem',
-			fontSize: '1.2rem',
+			float: 'right',
+			paddingTop: '1em',
 			color: '#42aaf3',
-			borderBottom: '1px solid'
+			borderBottom: '1px solid',
+			fontSize: '1.2rem',
+			pointerEvents: 'auto'
 		};
 
 		return (
@@ -75,10 +81,12 @@ const App = React.createClass({
 
 				<header style={headerStyles}>
 					<h1 style={headerTitleStyles}>Watchlist.</h1>
-					<p style={headerDescStyles}>A movie list app built with React. Acts as a training ground for devs.</p>
-					{(this.props.authorized &&
-						<button style={headerLogoutBtnStyles} onClick={this.handleLogOutBtnClick}>Log out</button>
-					)}
+					<div style={headerBodyStyles}>
+						<p style={headerDescStyles}>A movie list app built with React. Acts as a training ground for devs.</p>
+						{(this.props.authorized &&
+							<button style={headerLogoutBtnStyles} onClick={this.handleLogOutBtnClick}>Log out</button>
+						)}
+					</div>
 				</header>
 
 				{this.props.authorized && <SearchBox

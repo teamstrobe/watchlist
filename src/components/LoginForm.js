@@ -8,7 +8,7 @@ const LoginForm = React.createClass({
 			fontSize: '1rem',
 			// Layout
 			padding: '1rem',
-			width: 500,
+			maxWidth: 500,
 			margin: '0 auto',
 			// Color
 			background: '#333333',

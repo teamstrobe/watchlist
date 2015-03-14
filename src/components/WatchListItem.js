@@ -67,7 +67,7 @@ const WatchListItem = React.createClass({
 		};
 
 		return (
-			<article style={styles} onClick={this.handleClick} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+			<article style={styles} onClick={this.handleClick} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} onTouchEnd={this.handleTouchEnd}>
 				<button style={deleteBtnStyles} onClick={this.handleDeleteBtnClick}>
 					X
 				</button>
@@ -87,6 +87,12 @@ const WatchListItem = React.createClass({
 	handleMouseOut() {
 		this.setState({
 			isOver: false
+		});
+	},
+
+	handleTouchEnd() {
+		this.setState({
+			isOver: !this.state.isOver
 		});
 	},
 
