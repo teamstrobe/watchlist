@@ -6,12 +6,12 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 
 ## Get started
 
-+ Sign up for TMDB (https://www.themoviedb.org/) and verify your account 
-+ Copy `app.config.default.js` and paste into a new file called `app.config.js` in the same folder, then change to your own TMDB username and password
-+ Install dependencies with `npm install`
-+ Install Flummox dependencies by going to `node_modules/flummox` and running `npm install`
-+ Run webpack with `npm start` from the project root
-+ Go to `http://localhost:3000`
+1. Sign up for TMDB (https://www.themoviedb.org/) and verify your account 
+2. Copy `app.config.default.js` and paste into a new file called `app.config.js` in the same folder, then change to your own TMDB username and password
+3. Install dependencies with `npm install`
+4. Install Flummox dependencies by going to `node_modules/flummox` and running `npm install`
+5. Run webpack with `npm start` from the project root
+6. Go to `http://localhost:3000`
 
 ## Notable dependencies
 
@@ -22,8 +22,4 @@ Watchlist is a React.js demo, which communicates with the TMDB API to search for
 
 ## Roadmap
 
-+ Unit tests!
-+ Type annotation with Flow
-+ ~~Better store dependencies (UserStore currently depends on WatchlistStore... meh)~~
-+ Try out React Resolver with Flux ?!
-+ ~~Swap Reflux in favour of Flummox ?~~
+*The roadmap has been merged with [Issues](https://github.com/teamstrobe/watchlist/issues). If you'd like to contribute, please put a comment in the Issue, say that you're working on it, and submit a Pull Request when you're done. We'll love you for it, etc.*
