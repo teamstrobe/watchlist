@@ -1,42 +1,66 @@
-import React from 'react';
+import React from 'react/addons';
+import WatchListItem from './WatchListItem';
 
 const WatchList = React.createClass({
 
+	getDefaultProps() {
+		return {
+			itemSpacing: 50
+		};
+	},
+
 	render() {
+		var styles = _.extend({
+			paddingLeft: 50,
+			paddingRight: 50,
+			paddingBottom: 150
+		}, this.props.style);
+
+		var listStyles = {
+			fontSize: 0,
+			marginTop: -this.props.itemSpacing,
+			marginLeft: -this.props.itemSpacing,
+		};
+
+		var itemStyles = {
+			display: 'inline-block',
+			fontSize: '1rem',
+			verticalAlign: 'top',
+			paddingLeft: this.props.itemSpacing,
+			paddingTop: this.props.itemSpacing,
+		};
+
+		if(this.props.windowWidth > 400) {
+			itemStyles.width = 100 / 5 + '%';
+		}
+		else {
+			itemStyles.width = 100 / 2 + '%';
+		}
+
 		var latestMovies = (this.props.watchlist) ? this.props.watchlist.slice(0).reverse() : [];
 
 		if(latestMovies.length) {
 			return (
-				<ul className="watch-list">
-					{latestMovies.map(function(movie) {
-						return (
-							<li className="watch-list-item" key={movie.id}>
-								<button className="watch-list-item__delete-btn" onClick={this.onItemDeleteBtnClick.bind(this, movie)}>
-										Delete
-								</button>
-								<img className="watch-list-item__image" src={movie.poster_url} width="200" height="300" />
-								{movie.title}
+				<div style={styles}>
+					<ul style={listStyles}>
+						{latestMovies.map((movie) =>
+							<li key={movie.id} style={itemStyles}>
+								<WatchListItem movie={movie} onDeleteBtnClick={this.handleItemDeleteBtnClick.bind(this, movie)} />
 							</li>
-						);
-					}.bind(this))}
-				</ul>
+						)}
+					</ul>
+				</div>
 			);
 		}
 		else {
 			return (
-				<p>Movies on your watchlist will appear here :-)</p>
+				<p style={{padding: '3rem'}}>Movies on your watchlist will appear here :-)</p>
 			);
 		}
 	},
 
-	onItemDeleteBtnClick(movie) {
-		if(!confirm('Delete this movie from your watchlist?')) {
-			return;
-		}
-
-		if(this.props.onItemDelete) {
-			this.props.onItemDelete(movie);
-		}
+	handleItemDeleteBtnClick(movie) {
+		this.props.onItemDeleteBtnClick(movie);
 	}
 });
 

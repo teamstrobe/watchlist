@@ -1,5 +1,5 @@
 // Libs
-import React from 'react';
+import React from 'react/addons';
 
 // Components
 import SearchBox from './SearchBox';
@@ -7,6 +7,19 @@ import SearchResults from './SearchResults';
 import WatchList from './WatchList';
 
 const App = React.createClass({
+	componentWillMount: function() {
+		window.addEventListener('resize', this.handleWindowResize.bind(this));
+		this.setState({
+			windowWidth: window.innerWidth
+		});
+	},
+
+	handleWindowResize: function(event) {
+		this.setState({
+			windowWidth: window.innerWidth
+		});
+	},
+
 	render() {
 		var resultsActions = this.props.flux.getActions('results');
 
@@ -14,13 +27,47 @@ const App = React.createClass({
 			poster_url: 'http://image.tmdb.org/t/p/w300' + movie.poster_path
 		})) : null;
 
+		var wrapperStyle = {
+			// Reset
+			fontSize: '1rem',
+			// Color
+			backgroundColor: '#272727',
+			color: '#efefef'
+		};
+
+		var headerStyles = {
+			position: 'fixed',
+			bottom: 0,
+			left: 0,
+			zIndex: 1,
+			width: '100%',
+			background: '-webkit-linear-gradient(bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%)',
+			color: '#fff',
+			padding: '4rem 2rem 2rem'
+		};
+
+		var headerTitleStyles = {
+			fontSize: '2rem'
+		};
+
+		var headerDescStyles = {
+			paddingTop: '1em',
+			lineHeight: 1.4
+		};
+
 		return (
-			<div className="wrapper">
+			<section style={wrapperStyle}>
+
+				<header style={headerStyles}>
+					<h1 style={headerTitleStyles}>Watchlist.</h1>
+					<p style={headerDescStyles}>A movie list app built with React. Acts as a training ground for devs.</p>
+				</header>
 
 				{this.props.user && <SearchBox
 					value={this.props.query}
 					onSearch={resultsActions.movieQuery}
 					onClear={resultsActions.clearSearch}
+					windowWidth={this.state.windowWidth}
 				/>}
 
 				{this.props.user && (
@@ -31,17 +78,24 @@ const App = React.createClass({
 							watchlist={watchlist}
 							user={this.props.user}
 							onItemClick={this.onSearchResultsItemClick}
+							windowWidth={this.state.windowWidth}
 						/>
 
 						<WatchList
 							watchlist={watchlist}
-							onItemDelete={this.onWatchListItemDelete}
+							onItemDeleteBtnClick={this.onWatchListItemDelete}
+							style={{paddingTop: 50}}
+							windowWidth={this.state.windowWidth}
 						/>
+
 					</div>
 				) || (
-					<p>Logging in&hellip;</p>
+					<p style={{
+						padding: '3em'
+					}}>Logging in&hellip;</p>
 				)}
-			</div>
+
+			</section>
 		);
 	},
 
