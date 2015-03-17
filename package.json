@@ -18,7 +18,7 @@
     "whatwg-fetch": "^0.7.0",
     "react": "^0.12.2",
     "lodash": "^3.3.1",
-    "flummox": "joecritch/flummox",
+    "flummox": "https://github.com/joecritch/flummox/tarball/f73db36e7be0fd5dd83ae5902a8cf9798e91e0e4",
     "object-assign": "^2.0.0",
     "babel": "^4.7.3"
   }
