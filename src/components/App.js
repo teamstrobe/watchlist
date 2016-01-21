@@ -2,6 +2,7 @@
 import React from 'react';
 import tmdbAPI from '../tmdbAPI';
 import { fromJS } from 'immutable';
+import PureMixin from 'react-pure-render/mixin';
 
 // Components
 import SearchBox from './SearchBox';
@@ -10,6 +11,8 @@ import WatchList from './WatchList';
 import LoginForm from './LoginForm';
 
 const App = React.createClass({
+	// mixins: [PureMixin],
+
 	componentWillMount() {
 		window.addEventListener('resize', this.handleWindowResize);
 		this.handleWindowResize();

@@ -12,7 +12,7 @@ const AppContainer = React.createClass({
 		results: (store) => ({results: store.getResults(), query: store.getQuery()}),
 		user: (store) => ({user: store.getUser(), authorized: store.getAuthorized()}),
 		watchlist: (store) => ({watchlist: store.getWatchlist()})
-	}), PureMixin],
+	})],
 
 	render() {
 		return (
