@@ -13,14 +13,13 @@ const SearchResults = React.createClass({
 			padding: '1rem 3em'
 		}, this.props.style);
 
-		if(this.props.results.length) {
+		const watchlistIds = this.props.watchlist && this.props.watchlist.map(v => v.get('id'));
+
+		if(this.props.results.size) {
 			return (
 				<ul style={style}>
 					{this.props.results.map(function(result) {
-						var isAdded = _.filter(this.props.watchlist, function(movie) {
-							return result.id === movie.id;
-						}).length;
-
+						var isAdded = watchlistIds && watchlistIds.indexOf(result.get('id')) !== -1;
 						var itemStyle = {
 							color: '#fff',
 							fontSize: '1.6rem',
@@ -41,15 +40,15 @@ const SearchResults = React.createClass({
 						}
 
 						return isAdded ? (
-							<li key={result.id}>
+							<li key={result.get('id')}>
 								<span style={itemStyle}>
-									{result.title}
+									{result.get('title')}
 								</span>
 							</li>
 						) : (
-							<li key={result.id}>
+							<li key={result.get('id')}>
 								<button style={itemStyle} onClick={this.onItemClick.bind(this, result)}>
-									{result.title}
+									{result.get('title')}
 								</button>
 							</li>
 						);

@@ -42,7 +42,7 @@ const WatchListItem = React.createClass({
 		var imageContainerStyles = {
 			paddingTop: '146%',
 			// Content
-			background: 'url(' + this.props.movie.poster_url + ') no-repeat 50% 50%',
+			background: 'url(' + this.props.movie.get('poster_url') + ') no-repeat 50% 50%',
 			backgroundSize: '100% auto',
 			boxShadow: '0 0 100px rgba(0, 0, 0, 0.5)',
 			// border: this.state.isSelected ? '3px solid #2c74de' : '3px solid transparent'
@@ -72,7 +72,7 @@ const WatchListItem = React.createClass({
 					X
 				</button>
 				<div style={imageContainerStyles}></div>
-				<h2 style={headingStyles}>{this.props.movie.title}</h2>
+				<h2 style={headingStyles}>{this.props.movie.get('title')}</h2>
 			</article>
 		);
 

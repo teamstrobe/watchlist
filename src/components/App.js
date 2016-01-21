@@ -1,6 +1,7 @@
 // Libs
 import React from 'react/addons';
 import tmdbAPI from '../tmdbAPI';
+import { fromJS } from 'immutable';
 
 // Components
 import SearchBox from './SearchBox';
@@ -27,9 +28,9 @@ const App = React.createClass({
 	render() {
 		var resultsActions = this.props.flux.getActions('results');
 
-		var watchlist = this.props.watchlist ? this.props.watchlist.map(movie => _.extend(movie, {
-			poster_url: 'http://image.tmdb.org/t/p/w300' + movie.poster_path
-		})) : null;
+		var watchlist = this.props.watchlist.size ?
+			this.props.watchlist.map(movie => movie.set('poster_url', 'http://image.tmdb.org/t/p/w300' + movie.get('poster_path'))) :
+			null;
 
 		var wrapperStyle = {
 			// Reset
@@ -98,7 +99,7 @@ const App = React.createClass({
 
 				{this.props.authorized && (
 					<div>
-						
+
 						<SearchResults
 							results={this.props.results}
 							watchlist={watchlist}
@@ -147,7 +148,7 @@ const App = React.createClass({
 
 	async fetchData() {
 		var user = await this.props.flux.getActions('user').userFetch();
-	 	await this.props.flux.getActions('watchlist').watchlistFetch(user);
+	 	await this.props.flux.getActions('watchlist').watchlistFetch(fromJS(user));
 	},
 
 	handleLogOutBtnClick(event) {

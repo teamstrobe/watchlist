@@ -47,12 +47,12 @@ const WatchList = React.createClass({
 
 		var latestMovies = (this.props.watchlist) ? this.props.watchlist.slice(0).reverse() : [];
 
-		if(latestMovies.length) {
+		if(latestMovies.size) {
 			return (
 				<div style={styles}>
 					<ul style={listStyles}>
 						{latestMovies.map((movie) =>
-							<li key={movie.id} style={itemStyles}>
+							<li key={movie.get('id')} style={itemStyles}>
 								<WatchListItem movie={movie} onDeleteBtnClick={this.handleItemDeleteBtnClick.bind(this, movie)} />
 							</li>
 						)}

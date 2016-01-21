@@ -1,6 +1,6 @@
 {
   "name": "watchlist",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "react": "^0.13.0",
     "react-hot-loader": "^1.1.4",
@@ -12,14 +12,15 @@
   "scripts": {
     "start": "node server.js",
     "production": "webpack --config webpack.config.production.js",
-    "production:clean": "rm src/bundle.js"
+    "production:clean": "rm src/bundle.js",
+    "lint": "eslint src/index.js"
   },
   "dependencies": {
-    "whatwg-fetch": "^0.7.0",
-    "react": "^0.12.2",
-    "lodash": "^3.3.1",
+    "babel": "^4.7.3",
     "flummox": "https://github.com/joecritch/flummox/tarball/f73db36e7be0fd5dd83ae5902a8cf9798e91e0e4",
+    "immutable": "^3.7.6",
+    "lodash": "^3.3.1",
     "object-assign": "^2.0.0",
-    "babel": "^4.7.3"
+    "whatwg-fetch": "^0.7.0"
   }
 }

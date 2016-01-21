@@ -11,5 +11,3 @@ let flux = new AppFlux();
 var host = document.getElementById('host');
 
 React.render(React.createElement(AppContainer, {flux: flux}), host);
-
-// React.render(React.createElement(SearchBox), host);

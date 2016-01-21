@@ -1,4 +1,5 @@
 import { Store } from 'flummox';
+import { fromJS } from 'immutable';
 
 export default class ResultStore extends Store {
 
@@ -25,7 +26,7 @@ export default class ResultStore extends Store {
 
 	onMovieSearchCompleted(data) {
 		this.setState({
-			results: data.results
+			results: fromJS(data.results)
 		});
 	}
 

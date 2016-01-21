@@ -10,7 +10,7 @@ export default class WatchlistActions extends Actions {
 
 	async watchlistFetch(user) {
 		try {
-			return await tmdbAPI.get('/account/' + user.id + '/watchlist/movies');
+			return await tmdbAPI.get('/account/' + user.get('id') + '/watchlist/movies');
 		} catch(error) {
 			console.error('Could not fetch watchlist', error);
 		}
@@ -18,17 +18,17 @@ export default class WatchlistActions extends Actions {
 
 	async watchlistAdd(movie, user) {
 		this.resultActions.clearSearch();
-		return await tmdbAPI.post('/account/' + user.id + '/watchlist', {
+		return await tmdbAPI.post('/account/' + user.get('id') + '/watchlist', {
 			media_type: 'movie',
-			media_id: movie.id,
+			media_id: movie.get('id'),
 			watchlist: true
 		});
 	}
 
 	async watchlistRemove(movie, user) {
-		return await tmdbAPI.post('/account/' + user.id + '/watchlist', {
+		return await tmdbAPI.post('/account/' + user.get('id') + '/watchlist', {
 			media_type: 'movie',
-			media_id: movie.id,
+			media_id: movie.get('id'),
 			watchlist: false
 		});
 	}

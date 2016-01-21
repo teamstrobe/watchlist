@@ -1,5 +1,6 @@
 import { Store } from 'flummox';
 import flux from '../flux';
+import { fromJS } from 'immutable';
 
 export default class UserStore extends Store {
 
@@ -36,7 +37,7 @@ export default class UserStore extends Store {
 
 	onUserFetchCompleted(user) {
 		this.setState({
-			user: user
+			user: fromJS(user)
 		});
 	}
 

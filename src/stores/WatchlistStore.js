@@ -1,6 +1,6 @@
-import _ from 'lodash';
 import { Store } from 'flummox';
 import flux from '../flux';
+import { List, fromJS } from 'immutable';
 
 export default class WatchlistStore extends Store {
 
@@ -8,7 +8,7 @@ export default class WatchlistStore extends Store {
 		super();
 
 		this.state = {
-			watchlist: []
+			watchlist: new List()
 		};
 
 		let actionIds = flux.getActionIds('watchlist');
@@ -19,15 +19,14 @@ export default class WatchlistStore extends Store {
 
 	onWatchlistFetchCompleted(watchlist) {
 		this.setState({
-			watchlist: watchlist.results
+			watchlist: fromJS(watchlist.results)
 		});
 	}
 
 	onWatchlistAddBegin(movie) {
-		if(this.isInWatchlist(movie))
-			return;
-		
-		this.addMovie(movie, true);
+		if(!this.isInWatchlist(movie)) {
+			this.addMovie(movie, true);
+		}
 	}
 
 	onWatchlistAddFailed(error, movie) {
@@ -43,25 +42,22 @@ export default class WatchlistStore extends Store {
 	}
 
 	isInWatchlist(movie) {
-		return !!(_.filter(this.state.watchlist, function(v) {
-			return movie.id === v.id;
-		}).length);
+		return !!(this.state.watchlist.filter(function(v) {
+			return movie.get('id') === v.get('id');
+		}).size);
 	}
 
 	addMovie(movie, pending) {
-		this.state.watchlist.push(movie);
 		this.setState({
-			watchlist: this.state.watchlist
+			watchlist: this.state.watchlist.push(movie)
 		});
 	}
 
 	removeMovie(movie) {
-		var watchlist = _.filter(this.state.watchlist, function(v) {
-			return movie.id !== v.id;
-		});
-
 		this.setState({
-			watchlist: watchlist
+			watchlist: this.state.watchlist.filter(function(v) {
+				return movie.get('id') !== v.get('id');
+			})
 		});
 	}
 
