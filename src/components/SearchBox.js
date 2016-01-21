@@ -5,15 +5,18 @@ const SearchBox = React.createClass({
 	mixins: [PureMixin],
 
 	propTypes: {
-		windowWidth: React.PropTypes.number.isRequired,
-		onSearch: React.PropTypes.func.isRequired,
-		onClear: React.PropTypes.func.isRequired,
-		value: React.PropTypes.string.isRequired
+		onSearch: React.PropTypes.func,
+		onClear: React.PropTypes.func,
+		value: React.PropTypes.string,
+		windowWidth: React.PropTypes.number
 	},
 
-	getInitialState() {
+	getDefaultProps() {
 		return {
-			isFocused: false
+			value: '',
+			windowWidth: 500,
+			onSearch: () => null,
+			onClear: () => null
 		};
 	},
 
@@ -41,8 +44,6 @@ const SearchBox = React.createClass({
 				onChange={this.handleChange}
 				type="text"
 				placeholder="Add a film"
-				onFocus={this.handleFocus}
-				onBlur={this.handleBlur}
 			/>
 		);
 	},
@@ -53,18 +54,6 @@ const SearchBox = React.createClass({
 		} else {
 			this.props.onClear();
 		}
-	},
-
-	handleFocus() {
-		this.setState({
-			isFocused: true
-		});
-	},
-
-	handleBlur() {
-		this.setState({
-			isFocused: false
-		});
 	}
 });
 
