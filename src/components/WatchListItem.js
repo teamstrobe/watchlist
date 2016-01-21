@@ -2,7 +2,7 @@ import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
 
 const WatchListItem = React.createClass({
-	mixin: [PureMixin],
+	mixins: [PureMixin],
 
 	getDefaultProps() {
 		return {

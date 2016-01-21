@@ -3,7 +3,7 @@ import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
 
 const SearchResults = React.createClass({
-	// mixins: [PureMixin],
+	mixins: [PureMixin],
 
 	render() {
 		if(!this.props.results) {

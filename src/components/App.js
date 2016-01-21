@@ -11,7 +11,7 @@ import WatchList from './WatchList';
 import LoginForm from './LoginForm';
 
 const App = React.createClass({
-	// mixins: [PureMixin],
+	mixins: [PureMixin],
 
 	componentWillMount() {
 		window.addEventListener('resize', this.handleWindowResize);

@@ -2,7 +2,7 @@ import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
 
 const SearchBox = React.createClass({
-	// mixins: [PureMixin],
+	mixins: [PureMixin],
 
 	getInitialState() {
 		return {
