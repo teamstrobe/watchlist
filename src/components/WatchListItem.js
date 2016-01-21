@@ -1,19 +1,27 @@
 import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 const WatchListItem = React.createClass({
 	mixins: [PureMixin],
 
+	propTypes: {
+		movie: ImmutablePropTypes.map.isRequired,
+		onDeleteBtnClick: React.PropTypes.func.isRequired,
+		style: React.PropTypes.object,
+		deleteBtnSize: React.PropTypes.number
+	},
+
 	getDefaultProps() {
 		return {
-			deleteBtnSize: 30
+			deleteBtnSize: 30,
+			style: {}
 		}
 	},
 
 	getInitialState() {
 		return {
-			isOver: false,
-			// isSelected: false
+			isOver: false
 		};
 	},
 
@@ -110,9 +118,7 @@ const WatchListItem = React.createClass({
 			return;
 		}
 
-		if(this.props.onDeleteBtnClick) {
-			this.props.onDeleteBtnClick(movie);
-		}
+		this.props.onDeleteBtnClick(movie);
 	}
 });
 

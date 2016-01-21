@@ -4,6 +4,13 @@ import PureMixin from 'react-pure-render/mixin';
 const SearchBox = React.createClass({
 	mixins: [PureMixin],
 
+	propTypes: {
+		windowWidth: React.PropTypes.number.isRequired,
+		onSearch: React.PropTypes.func.isRequired,
+		onClear: React.PropTypes.func.isRequired,
+		value: React.PropTypes.string.isRequired
+	},
+
 	getInitialState() {
 		return {
 			isFocused: false
@@ -41,9 +48,9 @@ const SearchBox = React.createClass({
 	},
 
 	handleChange(event) {
-		if(event.target.value && this.props.onSearch) {
+		if(event.target.value) {
 			this.props.onSearch(event.target.value);
-		} else if(this.props.onClear) {
+		} else {
 			this.props.onClear();
 		}
 	},

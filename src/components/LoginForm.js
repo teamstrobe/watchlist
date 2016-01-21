@@ -5,6 +5,17 @@ import PureMixin from 'react-pure-render/mixin';
 const LoginForm = React.createClass({
 	mixins: [PureMixin],
 
+	propTypes: {
+		onSubmit: React.PropTypes.func.isRequired,
+		style: React.PropTypes.object
+	},
+
+	getDefaultProps() {
+		return {
+			style: {}
+		};
+	},
+
 	render() {
 		var styles = _.extend({
 			// Reset

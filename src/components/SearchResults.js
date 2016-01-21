@@ -1,9 +1,18 @@
 import _ from 'lodash';
 import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 const SearchResults = React.createClass({
 	mixins: [PureMixin],
+
+	propTypes: {
+		results: ImmutablePropTypes.list,
+		watchlist: ImmutablePropTypes.list.isRequired,
+		onItemClick: React.PropTypes.func.isRequired,
+		style: React.PropTypes.object,
+		windowWidth: React.PropTypes.number.isRequired
+	},
 
 	render() {
 		if(!this.props.results) {
@@ -34,12 +43,9 @@ const SearchResults = React.createClass({
 							whiteSpace: 'nowrap',
 							textOverflow: 'ellipsis',
 							maxWidth: '100%',
-							overflow: 'hidden'
+							overflow: 'hidden',
+							fontSize: '1rem'
 						};
-
-						if(this.props.windowWidth) {
-							itemStyle.fontSize = '1rem';
-						}
 
 						return isAdded ? (
 							<li key={result.get('id')}>
@@ -66,9 +72,7 @@ const SearchResults = React.createClass({
 	},
 
 	onItemClick(result) {
-		if(this.props.onItemClick) {
-			this.props.onItemClick(result);
-		}
+		this.props.onItemClick(result);
 	}
 });
 

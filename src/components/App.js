@@ -9,9 +9,20 @@ import SearchBox from './SearchBox';
 import SearchResults from './SearchResults';
 import WatchList from './WatchList';
 import LoginForm from './LoginForm';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+
+import AppFlux from '../flux';
 
 const App = React.createClass({
 	mixins: [PureMixin],
+
+	propTypes: {
+		watchlist: ImmutablePropTypes.list.isRequired,
+		flux: React.PropTypes.instanceOf(AppFlux).isRequired,
+		results: ImmutablePropTypes.list,
+		user: ImmutablePropTypes.map,
+		authorized: React.PropTypes.bool.isRequired
+	},
 
 	componentWillMount() {
 		window.addEventListener('resize', this.handleWindowResize);
@@ -31,9 +42,10 @@ const App = React.createClass({
 	render() {
 		var resultsActions = this.props.flux.getActions('results');
 
-		var watchlist = this.props.watchlist.size ?
-			this.props.watchlist.map(movie => movie.set('poster_url', 'http://image.tmdb.org/t/p/w300' + movie.get('poster_path'))) :
-			null;
+		var watchlist = this.props.watchlist.map(movie => movie.set(
+			'poster_url',
+			'http://image.tmdb.org/t/p/w300' + movie.get('poster_path')
+		));
 
 		var wrapperStyle = {
 			// Reset

@@ -23,6 +23,7 @@
     "lodash": "^3.3.1",
     "object-assign": "^2.0.0",
     "react-dom": "^0.14.6",
+    "react-immutable-proptypes": "^1.5.1",
     "react-pure-render": "^1.0.2",
     "whatwg-fetch": "^0.7.0"
   }

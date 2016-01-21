@@ -1,9 +1,17 @@
 import React from 'react';
 import WatchListItem from './WatchListItem';
 import PureMixin from 'react-pure-render/mixin';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 const WatchList = React.createClass({
 	mixins: [PureMixin],
+
+	propTypes: {
+		windowWidth: React.PropTypes.number.isRequired,
+		onItemDeleteBtnClick: React.PropTypes.func.isRequired,
+		itemSpacing: React.PropTypes.number.isRequired,
+		watchlist: ImmutablePropTypes.list.isRequired
+	},
 
 	getDefaultProps() {
 		return {
@@ -47,13 +55,11 @@ const WatchList = React.createClass({
 			itemStyles.width = '100%';
 		}
 
-		var latestMovies = (this.props.watchlist) ? this.props.watchlist.slice(0).reverse() : [];
-
-		if(latestMovies.size) {
+		if(this.props.watchlist.size) {
 			return (
 				<div style={styles}>
 					<ul style={listStyles}>
-						{latestMovies.map((movie) =>
+						{this.props.watchlist.reverse().map((movie) =>
 							<li key={movie.get('id')} style={itemStyles}>
 								<WatchListItem movie={movie} onDeleteBtnClick={this.handleItemDeleteBtnClick.bind(this, movie)} />
 							</li>
