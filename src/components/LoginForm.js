@@ -1,7 +1,10 @@
 import React from 'react/addons';
 import _ from 'lodash';
+import PureMixin from 'react-pure-render/mixin';
 
 const LoginForm = React.createClass({
+	mixins: [PureMixin],
+
 	render() {
 		var styles = _.extend({
 			// Reset

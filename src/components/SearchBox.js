@@ -1,6 +1,9 @@
 import React from 'react/addons';
+import PureMixin from 'react-pure-render/mixin';
 
 const SearchBox = React.createClass({
+	mixins: [PureMixin],
+
 	getInitialState() {
 		return {
 			isFocused: false

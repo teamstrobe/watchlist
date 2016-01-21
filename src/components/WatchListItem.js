@@ -1,6 +1,9 @@
 import React from 'react/addons';
+import PureMixin from 'react-pure-render/mixin';
 
 const WatchListItem = React.createClass({
+	mixin: [PureMixin],
+
 	getDefaultProps() {
 		return {
 			deleteBtnSize: 30

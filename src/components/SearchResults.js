@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import React from 'react/addons';
+import PureMixin from 'react-pure-render/mixin';
 
 const SearchResults = React.createClass({
+	mixins: [PureMixin],
 
 	render() {
 		if(!this.props.results) {
