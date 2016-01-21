@@ -61,7 +61,7 @@ const WatchList = React.createClass({
 					<ul style={listStyles}>
 						{this.props.watchlist.reverse().map((movie) =>
 							<li key={movie.get('id')} style={itemStyles}>
-								<WatchListItem movie={movie} onDeleteBtnClick={this.handleItemDeleteBtnClick.bind(this, movie)} />
+								<WatchListItem movie={movie} onDeleteBtnClick={() => this.props.onItemDeleteBtnClick(movie)} />
 							</li>
 						)}
 					</ul>
@@ -73,10 +73,6 @@ const WatchList = React.createClass({
 				<p style={{padding: '3rem'}}>Movies on your watchlist will appear here :-)</p>
 			);
 		}
-	},
-
-	handleItemDeleteBtnClick(movie) {
-		this.props.onItemDeleteBtnClick(movie);
 	}
 });
 
