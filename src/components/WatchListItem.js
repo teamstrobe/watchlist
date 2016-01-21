@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 
 const WatchListItem = React.createClass({
 	getDefaultProps() {

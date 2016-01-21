@@ -1,5 +1,5 @@
 // Libs
-import React from 'react/addons';
+import React from 'react';
 import tmdbAPI from '../tmdbAPI';
 
 // Components
@@ -98,7 +98,7 @@ const App = React.createClass({
 
 				{this.props.authorized && (
 					<div>
-						
+
 						<SearchResults
 							results={this.props.results}
 							watchlist={watchlist}

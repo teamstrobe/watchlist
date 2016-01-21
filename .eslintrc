@@ -5,7 +5,7 @@
 		"node": true
 	},
 	"rules": {
-		"quotes": "single",
+		"quotes": [2, "single"],
 
 		// Turn strict off for now
 		"strict": 0,
