@@ -1,6 +1,6 @@
 {
   "name": "watchlist",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "babel-core": "^4.6.6",
     "babel-loader": "^4.0.0",
