@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import WatchListItem from './WatchListItem';
 import PureMixin from 'react-pure-render/mixin';
 

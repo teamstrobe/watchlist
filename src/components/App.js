@@ -1,5 +1,5 @@
 // Libs
-import React from 'react/addons';
+import React from 'react';
 import tmdbAPI from '../tmdbAPI';
 import { fromJS } from 'immutable';
 

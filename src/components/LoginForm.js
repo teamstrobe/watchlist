@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import _ from 'lodash';
 import PureMixin from 'react-pure-render/mixin';
 

@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
 
 const SearchBox = React.createClass({

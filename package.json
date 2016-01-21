@@ -2,8 +2,8 @@
   "name": "watchlist",
   "version": "0.1.0",
   "devDependencies": {
-    "react": "^0.13.0",
-    "react-hot-loader": "^1.1.4",
+    "react": "^0.14.6",
+    "react-hot-loader": "^1.3.0",
     "webpack": "^1.5.1",
     "webpack-dev-server": "^1.6.4",
     "babel-core": "^4.6.6",
@@ -21,6 +21,7 @@
     "immutable": "^3.7.6",
     "lodash": "^3.3.1",
     "object-assign": "^2.0.0",
+    "react-dom": "^0.14.6",
     "react-pure-render": "^1.0.2",
     "whatwg-fetch": "^0.7.0"
   }

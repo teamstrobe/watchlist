@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React from 'react/addons';
+import React from 'react';
 import PureMixin from 'react-pure-render/mixin';
 
 const SearchResults = React.createClass({
