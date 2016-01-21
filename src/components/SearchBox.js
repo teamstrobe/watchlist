@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 
 const SearchBox = React.createClass({
 	getInitialState() {
