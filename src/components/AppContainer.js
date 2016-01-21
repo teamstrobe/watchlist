@@ -4,7 +4,6 @@ import fluxMixin from 'flummox/mixin';
 
 // Components
 import App from './App';
-import FluxComponent from 'flummox/component';
 
 const AppContainer = React.createClass({
 	mixins: [fluxMixin({
