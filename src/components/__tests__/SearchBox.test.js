@@ -36,13 +36,26 @@ describe('SearchBox', () => {
 		render(<SearchBox onSearch={spy} />);
 		tree.props.onChange({target: {value: 'Star Wars'}});
 		expect(spy).toHaveBeenCalledWith('Star Wars');
-		spy.restore();
+	});
+
+	it('has a noop onSearch callback by default', () => {
+		expect(instance.props.onSearch()).toEqual(null);
 	});
 
 	it('triggers the onClear callback', () => {
 		render(<SearchBox onClear={spy} value="Star Wars" />);
 		tree.props.onChange({target: {value: ''}});
 		expect(spy).toHaveBeenCalled();
+	});
+
+	it('has a noop onClear callback by default', () => {
+		expect(instance.props.onClear()).toEqual(null);
+	});
+
+	it('affects the input\'s fontSize by windowWidth', () => {
+		expect(tree.props.style.fontSize).toEqual('3rem');
+		tree.reRender(<SearchBox windowWidth={300} />);
+		expect(tree.props.style.fontSize).toEqual('1.5rem');
 	});
 
 	afterEach(() => {

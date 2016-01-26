@@ -21,7 +21,8 @@
     "production": "webpack --config webpack.config.production.js",
     "production:clean": "rm src/bundle.js",
     "lint": "eslint src/index.js",
-    "test": "mocha src/**/__tests__/**/*.test.js --compilers js:babel-core/register"
+    "test": "mocha src/**/__tests__/**/*.test.js --compilers js:babel-core/register",
+    "coverage": "istanbul cover _mocha -- src/**/__tests__/**/*.test.js --compilers js:babel-core/register"
   },
   "dependencies": {
     "babel": "^4.7.3",

@@ -27,15 +27,9 @@ const SearchBox = React.createClass({
 			color: '#42aaf3',
 			width: '100%',
 			border: 0,
-			outline: 0
+			outline: 0,
+			fontSize: this.props.windowWidth > 400 ? '3rem' : '1.5rem'
 		};
-
-		if(this.props.windowWidth > 400) {
-			inputStyle.fontSize = '3rem';
-		}
-		else {
-			inputStyle.fontSize = '1.5rem';
-		}
 
 		return (
 			<input
