@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for components/__tests__/SearchBox.test.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">components/__tests__/</a> SearchBox.test.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.78% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>44/45</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>3/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.31% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">97.73% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>43/44</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+var _interopRequire = function (obj) { return obj &amp;&amp; obj.__esModule ? <span class="branch-0 cbranch-no" title="branch not covered" >obj["default"] </span>: obj; };
+&nbsp;
+var expect = _interopRequire(require("expect"));
+&nbsp;
+var TestUtils = _interopRequire(require("react-addons-test-utils"));
+&nbsp;
+var expectJSX = _interopRequire(require("expect-jsx"));
+&nbsp;
+var React = _interopRequire(require("react"));
+&nbsp;
+var SearchBox = _interopRequire(require("../SearchBox"));
+&nbsp;
+var sd = _interopRequire(require("skin-deep"));
+&nbsp;
+expect.extend(expectJSX);
+&nbsp;
+describe("SearchBox", function () {
+	var tree = undefined,
+	    instance = undefined,
+	    vdom = undefined,
+	    spy = undefined;
+&nbsp;
+	function render(el) {
+		tree = sd.shallowRender(el);
+		instance = tree.getMountedInstance();
+		vdom = tree.getRenderOutput();
+	}
+&nbsp;
+	beforeEach(function () {
+		render(React.createElement(SearchBox, null));
+		spy = expect.createSpy(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >			return null;</span>
+		});
+	});
+&nbsp;
+	it("renders a text input", function () {
+		expect(vdom.type).toEqual("input");
+		expect(vdom.props.type).toEqual("text");
+	});
+&nbsp;
+	it("renders the value", function () {
+		var expected = "General Hux";
+		render(React.createElement(SearchBox, { value: expected }));
+		expect(vdom.props.value).toEqual(expected);
+	});
+&nbsp;
+	it("triggers the onSearch callback", function () {
+		render(React.createElement(SearchBox, { onSearch: spy }));
+		tree.props.onChange({ target: { value: "Star Wars" } });
+		expect(spy).toHaveBeenCalledWith("Star Wars");
+	});
+&nbsp;
+	it("has a noop onSearch callback by default", function () {
+		expect(instance.props.onSearch()).toEqual(null);
+	});
+&nbsp;
+	it("triggers the onClear callback", function () {
+		render(React.createElement(SearchBox, { onClear: spy, value: "Star Wars" }));
+		tree.props.onChange({ target: { value: "" } });
+		expect(spy).toHaveBeenCalled();
+	});
+&nbsp;
+	it("has a noop onClear callback by default", function () {
+		expect(instance.props.onClear()).toEqual(null);
+	});
+&nbsp;
+	it("affects the input's fontSize by windowWidth", function () {
+		expect(tree.props.style.fontSize).toEqual("3rem");
+		tree.reRender(React.createElement(SearchBox, { windowWidth: 300 }));
+		expect(tree.props.style.fontSize).toEqual("1.5rem");
+	});
+&nbsp;
+	afterEach(function () {
+		spy.restore();
+		expect.restoreSpies();
+	});
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb2Vjcml0Y2hsZXkvU2l0ZXMvd2F0Y2hsaXN0L3NyYy9jb21wb25lbnRzL19fdGVzdHNfXy9TZWFyY2hCb3gudGVzdC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0lBQU8sTUFBTSwyQkFBTSxRQUFROztJQUNwQixTQUFTLDJCQUFNLHlCQUF5Qjs7SUFDeEMsU0FBUywyQkFBTSxZQUFZOztJQUMzQixLQUFLLDJCQUFNLE9BQU87O0lBQ2xCLFNBQVMsMkJBQU0sY0FBYzs7SUFDN0IsRUFBRSwyQkFBTSxXQUFXOztBQUUxQixNQUFNLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxDQUFDOztBQUV6QixRQUFRLENBQUMsV0FBVyxFQUFFLFlBQU07QUFDM0IsS0FBSSxJQUFJLFlBQUE7S0FBRSxRQUFRLFlBQUE7S0FBRSxJQUFJLFlBQUE7S0FBRSxHQUFHLFlBQUEsQ0FBQzs7QUFFOUIsVUFBUyxNQUFNLENBQUMsRUFBRSxFQUFFO0FBQ25CLE1BQUksR0FBRyxFQUFFLENBQUMsYUFBYSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0FBQzVCLFVBQVEsR0FBRyxJQUFJLENBQUMsa0JBQWtCLEVBQUUsQ0FBQztBQUNyQyxNQUFJLEdBQUcsSUFBSSxDQUFDLGVBQWUsRUFBRSxDQUFDO0VBQzlCOztBQUVELFdBQVUsQ0FBQyxZQUFNO0FBQ2hCLFFBQU0sQ0FBQyxvQkFBQyxTQUFTLE9BQUcsQ0FBQyxDQUFDO0FBQ3RCLEtBQUcsR0FBRyxNQUFNLENBQUMsU0FBUyxDQUFDO1VBQU0sSUFBSTtHQUFBLENBQUMsQ0FBQztFQUNuQyxDQUFDLENBQUM7O0FBRUgsR0FBRSxDQUFDLHNCQUFzQixFQUFFLFlBQU07QUFDaEMsUUFBTSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLENBQUM7QUFDbkMsUUFBTSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxDQUFDO0VBQ3hDLENBQUMsQ0FBQzs7QUFFSCxHQUFFLENBQUMsbUJBQW1CLEVBQUUsWUFBTTtBQUM3QixNQUFNLFFBQVEsR0FBRyxhQUFhLENBQUM7QUFDL0IsUUFBTSxDQUFDLG9CQUFDLFNBQVMsSUFBQyxLQUFLLEVBQUUsUUFBUSxBQUFDLEdBQUcsQ0FBQyxDQUFDO0FBQ3ZDLFFBQU0sQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEtBQUssQ0FBQyxDQUFDLE9BQU8sQ0FBQyxRQUFRLENBQUMsQ0FBQztFQUMzQyxDQUFDLENBQUM7O0FBRUgsR0FBRSxDQUFDLGdDQUFnQyxFQUFFLFlBQU07QUFDMUMsUUFBTSxDQUFDLG9CQUFDLFNBQVMsSUFBQyxRQUFRLEVBQUUsR0FBRyxBQUFDLEdBQUcsQ0FBQyxDQUFDO0FBQ3JDLE1BQUksQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLEVBQUMsTUFBTSxFQUFFLEVBQUMsS0FBSyxFQUFFLFdBQVcsRUFBQyxFQUFDLENBQUMsQ0FBQztBQUNwRCxRQUFNLENBQUMsR0FBRyxDQUFDLENBQUMsb0JBQW9CLENBQUMsV0FBVyxDQUFDLENBQUM7RUFDOUMsQ0FBQyxDQUFDOztBQUVILEdBQUUsQ0FBQyx5Q0FBeUMsRUFBRSxZQUFNO0FBQ25ELFFBQU0sQ0FBQyxRQUFRLENBQUMsS0FBSyxDQUFDLFFBQVEsRUFBRSxDQUFDLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO0VBQ2hELENBQUMsQ0FBQzs7QUFFSCxHQUFFLENBQUMsK0JBQStCLEVBQUUsWUFBTTtBQUN6QyxRQUFNLENBQUMsb0JBQUMsU0FBUyxJQUFDLE9BQU8sRUFBRSxHQUFHLEFBQUMsRUFBQyxLQUFLLEVBQUMsV0FBVyxHQUFHLENBQUMsQ0FBQztBQUN0RCxNQUFJLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxFQUFDLE1BQU0sRUFBRSxFQUFDLEtBQUssRUFBRSxFQUFFLEVBQUMsRUFBQyxDQUFDLENBQUM7QUFDM0MsUUFBTSxDQUFDLEdBQUcsQ0FBQyxDQUFDLGdCQUFnQixFQUFFLENBQUM7RUFDL0IsQ0FBQyxDQUFDOztBQUVILEdBQUUsQ0FBQyx3Q0FBd0MsRUFBRSxZQUFNO0FBQ2xELFFBQU0sQ0FBQyxRQUFRLENBQUMsS0FBSyxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO0VBQy9DLENBQUMsQ0FBQzs7QUFFSCxHQUFFLENBQUMsNkNBQThDLEVBQUUsWUFBTTtBQUN4RCxRQUFNLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxDQUFDO0FBQ2xELE1BQUksQ0FBQyxRQUFRLENBQUMsb0JBQUMsU0FBUyxJQUFDLFdBQVcsRUFBRSxHQUFHLEFBQUMsR0FBRyxDQUFDLENBQUM7QUFDL0MsUUFBTSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxRQUFRLENBQUMsQ0FBQztFQUNwRCxDQUFDLENBQUM7O0FBRUgsVUFBUyxDQUFDLFlBQU07QUFDZixLQUFHLENBQUMsT0FBTyxFQUFFLENBQUM7QUFDZCxRQUFNLENBQUMsWUFBWSxFQUFFLENBQUM7RUFDdEIsQ0FBQyxDQUFDO0NBQ0gsQ0FBQyxDQUFDIiwiZmlsZSI6Ii9Vc2Vycy9qb2Vjcml0Y2hsZXkvU2l0ZXMvd2F0Y2hsaXN0L3NyYy9jb21wb25lbnRzL19fdGVzdHNfXy9TZWFyY2hCb3gudGVzdC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBleHBlY3QgZnJvbSAnZXhwZWN0JztcbmltcG9ydCBUZXN0VXRpbHMgZnJvbSAncmVhY3QtYWRkb25zLXRlc3QtdXRpbHMnO1xuaW1wb3J0IGV4cGVjdEpTWCBmcm9tICdleHBlY3QtanN4JztcbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgU2VhcmNoQm94IGZyb20gJy4uL1NlYXJjaEJveCc7XG5pbXBvcnQgc2QgZnJvbSAnc2tpbi1kZWVwJztcblxuZXhwZWN0LmV4dGVuZChleHBlY3RKU1gpO1xuXG5kZXNjcmliZSgnU2VhcmNoQm94JywgKCkgPT4ge1xuXHRsZXQgdHJlZSwgaW5zdGFuY2UsIHZkb20sIHNweTtcblxuXHRmdW5jdGlvbiByZW5kZXIoZWwpIHtcblx0XHR0cmVlID0gc2Quc2hhbGxvd1JlbmRlcihlbCk7XG5cdFx0aW5zdGFuY2UgPSB0cmVlLmdldE1vdW50ZWRJbnN0YW5jZSgpO1xuXHRcdHZkb20gPSB0cmVlLmdldFJlbmRlck91dHB1dCgpO1xuXHR9XG5cblx0YmVmb3JlRWFjaCgoKSA9PiB7XG5cdFx0cmVuZGVyKDxTZWFyY2hCb3ggLz4pO1xuXHRcdHNweSA9IGV4cGVjdC5jcmVhdGVTcHkoKCkgPT4gbnVsbCk7XG5cdH0pO1xuXG5cdGl0KCdyZW5kZXJzIGEgdGV4dCBpbnB1dCcsICgpID0+IHtcblx0XHRleHBlY3QodmRvbS50eXBlKS50b0VxdWFsKCdpbnB1dCcpO1xuXHRcdGV4cGVjdCh2ZG9tLnByb3BzLnR5cGUpLnRvRXF1YWwoJ3RleHQnKTtcblx0fSk7XG5cblx0aXQoJ3JlbmRlcnMgdGhlIHZhbHVlJywgKCkgPT4ge1xuXHRcdGNvbnN0IGV4cGVjdGVkID0gJ0dlbmVyYWwgSHV4Jztcblx0XHRyZW5kZXIoPFNlYXJjaEJveCB2YWx1ZT17ZXhwZWN0ZWR9IC8+KTtcblx0XHRleHBlY3QodmRvbS5wcm9wcy52YWx1ZSkudG9FcXVhbChleHBlY3RlZCk7XG5cdH0pO1xuXG5cdGl0KCd0cmlnZ2VycyB0aGUgb25TZWFyY2ggY2FsbGJhY2snLCAoKSA9PiB7XG5cdFx0cmVuZGVyKDxTZWFyY2hCb3ggb25TZWFyY2g9e3NweX0gLz4pO1xuXHRcdHRyZWUucHJvcHMub25DaGFuZ2Uoe3RhcmdldDoge3ZhbHVlOiAnU3RhciBXYXJzJ319KTtcblx0XHRleHBlY3Qoc3B5KS50b0hhdmVCZWVuQ2FsbGVkV2l0aCgnU3RhciBXYXJzJyk7XG5cdH0pO1xuXG5cdGl0KCdoYXMgYSBub29wIG9uU2VhcmNoIGNhbGxiYWNrIGJ5IGRlZmF1bHQnLCAoKSA9PiB7XG5cdFx0ZXhwZWN0KGluc3RhbmNlLnByb3BzLm9uU2VhcmNoKCkpLnRvRXF1YWwobnVsbCk7XG5cdH0pO1xuXG5cdGl0KCd0cmlnZ2VycyB0aGUgb25DbGVhciBjYWxsYmFjaycsICgpID0+IHtcblx0XHRyZW5kZXIoPFNlYXJjaEJveCBvbkNsZWFyPXtzcHl9IHZhbHVlPVwiU3RhciBXYXJzXCIgLz4pO1xuXHRcdHRyZWUucHJvcHMub25DaGFuZ2Uoe3RhcmdldDoge3ZhbHVlOiAnJ319KTtcblx0XHRleHBlY3Qoc3B5KS50b0hhdmVCZWVuQ2FsbGVkKCk7XG5cdH0pO1xuXG5cdGl0KCdoYXMgYSBub29wIG9uQ2xlYXIgY2FsbGJhY2sgYnkgZGVmYXVsdCcsICgpID0+IHtcblx0XHRleHBlY3QoaW5zdGFuY2UucHJvcHMub25DbGVhcigpKS50b0VxdWFsKG51bGwpO1xuXHR9KTtcblxuXHRpdCgnYWZmZWN0cyB0aGUgaW5wdXRcXCdzIGZvbnRTaXplIGJ5IHdpbmRvd1dpZHRoJywgKCkgPT4ge1xuXHRcdGV4cGVjdCh0cmVlLnByb3BzLnN0eWxlLmZvbnRTaXplKS50b0VxdWFsKCczcmVtJyk7XG5cdFx0dHJlZS5yZVJlbmRlcig8U2VhcmNoQm94IHdpbmRvd1dpZHRoPXszMDB9IC8+KTtcblx0XHRleHBlY3QodHJlZS5wcm9wcy5zdHlsZS5mb250U2l6ZSkudG9FcXVhbCgnMS41cmVtJyk7XG5cdH0pO1xuXG5cdGFmdGVyRWFjaCgoKSA9PiB7XG5cdFx0c3B5LnJlc3RvcmUoKTtcblx0XHRleHBlY3QucmVzdG9yZVNwaWVzKCk7XG5cdH0pO1xufSk7XG4iXX0=</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jan 22 2016 11:51:11 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
